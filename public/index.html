@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Earth Model</title>
+  <meta name="viewport" content="width=device-width, shrink-to-fit=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Earth">
+  <meta name="keywords" content="Earth">
+  <meta name="description" content="Earth model app; Author: Vladimir Mandic <mandic00@live.com>">
+  <meta name="msapplication-tooltip" content="Earth model ; Author: Vladimir Mandic <mandic00@live.com>">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="../earth.webmanifest">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="icon" sizes="256x256" href="../assets/icons/dash-256.png">
+  <link rel="apple-touch-icon" href="../assets/icons/dash-256.png">
+  <link rel="apple-touch-startup-image" href="../assets/icons/dash-256.png">
+  <script src="earth.js"></script>
+  <style>
+    @font-face { font-family: 'CenturyGothic'; font-display: swap; font-style: normal; font-weight: 400; src: local('CenturyGothic'), url('/assets/century-gothic.ttf') format('truetype'); }
+    html { font-size: 18px; }
+    body { font-size: 1rem; font-family: "CenturyGothic", "Segoe UI", sans-serif; font-variant: small-caps; width: -webkit-fill-available; height: 100%; background: black; color: white; overflow-x: hidden; margin: 0; cursor: default; }
+    .header { display: block; }
+    .nav { display: block; }
+    .main { display: block; width: max-content; }
+    .footer { display: block; }
+    .aside { display: block; }
+  </style>
+</head>
+<body>
+  <noscript><h1>javascript is required</h1></noscript>
+  <nav>
+    <div id="nav" class="nav"></div>
+  </nav>
+  <header>
+    <div id="header" class="header"></div>
+  </header>
+  <main>
+    <canvas id="canvas" width=1920 height=1080 style="width: 100%; height: 100%; position: fixed; top: 0; left: 0"></canvas>
+    <div id="inspector" style="position: absolute; top: 0; right: 0; max-width: 800px; height: 100%; display: flex;"></div>
+  </main>
+  <footer>
+    <div id="footer" class="footer">
+    </div>
+  </footer>
+  <aside>
+    <div id="aside" class="aside"></div>
+  </aside>
+</body>
+</html>
