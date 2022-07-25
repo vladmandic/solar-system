@@ -28,19 +28,19 @@
       "sourcemap": true,
       "treeShaking": true,
       "ignoreAnnotations": true,
-      "minify": true,
+      "minify": false,
       "platform": "browser",
       "format": "esm",
-    "banner": { "js": "/*\n  Earth\n  homepage: <https://github.com/vladmandic/earth>\n  author: <https://github.com/vladmandic>'\n*/\n" }
+    "banner": { "js": "/*\n  Solar system model app\n  homepage: <https://github.com/vladmandic/solar-system>\n  author: <https://github.com/vladmandic>'\n*/\n" }
     },
     "development": {
-      "minify": true
+      "minify": false
     },
     "targets": [
       {
-        "name": "earth",
-        "input": "src/earth.ts",
-        "output": "public/earth.js"
+        "name": "solar-system",
+        "input": "src/index.ts",
+        "output": "public/index.js"
       }
     ]
   },

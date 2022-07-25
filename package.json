@@ -1,34 +1,45 @@
 {
-  "name": "@vladmandic/earth",
+  "name": "@vladmandic/solar-system",
   "version": "0.1.0",
-  "description": "Earth model app",
+  "description": "Solar system model app",
   "sideEffects": false,
   "main": "public/earth.js",
   "author": "Vladimir Mandic <mandic00@live.com>",
   "bugs": {
-    "url": "https://github.com/vladmandic/earth/issues"
+    "url": "https://github.com/vladmandic/solar-system/issues"
   },
-  "homepage": "https://vladmandic.github.io/earth/index.html",
+  "homepage": "https://vladmandic.github.io/solar-system/index.html",
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vladmandic/earth.git"
+    "url": "git+https://github.com/vladmandic/solar-system.git"
   },
   "scripts": {
     "dev": "build --profile development"
   },
   "keywords": [
     "earth",
+    "solar-system",
     "babylonjs"
   ],
-  "devDependencies": {
+  "dependencies": {
+    "@babylonjs/core": "^5.16.0",
+    "@babylonjs/gui": "^5.16.0",
+    "@babylonjs/gui-editor": "^5.16.0",
+    "@babylonjs/inspector": "^5.16.0",
+    "@babylonjs/loaders": "^5.16.0",
+    "@babylonjs/materials": "^5.16.0",
+    "@babylonjs/serializers": "^5.16.0",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "@vladmandic/build": "^0.7.7",
-    "esbuild": "^0.14.49",
+    "babylonjs-gltf2interface": "^5.16.0",
+    "esbuild": "^0.14.50",
     "eslint": "8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-html": "^7.0.0",
@@ -37,14 +48,5 @@
     "suncalc": "^1.9.0",
     "tslib": "^2.4.0",
     "typescript": "4.7.4"
-  },
-  "dependencies": {
-    "@babylonjs/core": "^5.16.0",
-    "@babylonjs/gui": "^5.16.0",
-    "@babylonjs/gui-editor": "^5.16.0",
-    "@babylonjs/inspector": "^5.16.0",
-    "@babylonjs/loaders": "^5.16.0",
-    "@babylonjs/materials": "^5.16.0",
-    "@babylonjs/serializers": "^5.16.0"
   }
 }
