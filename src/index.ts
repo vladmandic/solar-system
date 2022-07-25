@@ -1,6 +1,9 @@
+import { Vector3 } from '@babylonjs/core';
 import { log } from './log';
+import { global } from './globals';
 import { getVSOPdata } from './astronomy';
-import { updateSolarSystem } from './scene';
+import { createScene } from './scene';
+import { createSolarBody } from './body';
 
 async function main() {
   log('solar system model app');
@@ -13,9 +16,15 @@ async function main() {
 
   let date = new Date();
   setInterval(() => {
-    date = new Date((date.getTime() + (3600000 * 2))); // 2h intervals
+    if (global.pause) return;
+    date = new Date((date.getTime() + (3600000 * global.step)));
+    if (!global.scene) global.scene = createScene();
     const data = getVSOPdata(date);
-    updateSolarSystem(data);
+    for (const name of Object.keys(data)) {
+      let mesh = global.scene.meshes.find((m) => m.name === name);
+      if (!mesh) mesh = createSolarBody(name, data[name]);
+      mesh.position = new Vector3(...data[name]);
+    }
   }, 5);
 }
 
