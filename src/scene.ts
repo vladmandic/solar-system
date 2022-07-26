@@ -56,10 +56,6 @@ export function createScene() {
   skybox.material = skyboxMaterial;
   skybox.isPickable = false;
 
-  // Show Inspector
-  const globalRoot = document.getElementById('inspector') as HTMLDivElement;
-  global.scene.debugLayer.show({ embedMode: true, overlay: false, showExplorer: true, showInspector: true, globalRoot });
-
   registerEvents();
   return global.scene;
 }

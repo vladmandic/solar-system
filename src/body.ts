@@ -3,6 +3,12 @@ import { log } from './log';
 import { global } from './globals';
 import { bodies } from '../assets/solar-system.json';
 
+// input: h in [0,360] and s,v in [0,1] - output: r,g,b in [0,1]
+const hsv2rgba = (h, s, v) => {
+  const f = (n, k = (n + h / 60) % 6) => v - v * s * Math.max(Math.min(k, 4 - k, 1), 0);
+  return [f(5), f(3), f(1), 1];
+};
+
 function createParticleSystem(name: string): ParticleSystem | GPUParticleSystem {
   const capacity = 10000;
   let trace;
@@ -18,12 +24,12 @@ function createParticleSystem(name: string): ParticleSystem | GPUParticleSystem 
   trace.minSize = 0.01;
   trace.maxSize = 0.02;
   trace.minLifeTime = 1;
-  trace.maxLifeTime = 10;
+  trace.maxLifeTime = 5;
   trace.minEmitPower = 0;
   trace.maxEmitPower = 0;
-  trace.color1 = Color4.FromHexString('#292900');
-  trace.color2 = Color4.FromHexString('#002929');
-  trace.colorDead = Color4.FromHexString('#290000');
+  trace.color1 = new Color4(...hsv2rgba(Math.round(360 * Math.random()), 1, 0.5));
+  trace.color2 = new Color4(...hsv2rgba(Math.round(360 * Math.random()), 1, 0.1));
+  trace.colorDead = new Color4(0, 0, 0, 0);
   trace.particleEmitterType = new PointParticleEmitter();
   trace.emitter = (global.scene as Scene).meshes.find((m) => m.name === name);
   trace.start();
@@ -51,6 +57,8 @@ export function createSolarBody(name: string, data): Mesh {
   if (material.diffuseTexture) material.diffuseTexture['vScale'] = -1;
   sphere.material = material;
   sphere.position = new Vector3(...data);
+  sphere.rotation = new Vector3(Math.PI / 4, 0, -(desc.axialTilt as number || 0) * Math.PI / 360);
   createParticleSystem(name);
+  global[name] = sphere;
   return sphere;
 }

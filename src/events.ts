@@ -11,7 +11,7 @@ export function pointerDown() {
     log(pickInfo?.pickedMesh.name);
     (global.scene.activeCamera as ArcRotateCamera).setTarget(pickInfo?.pickedMesh);
   } else {
-    global.pause = !global.pause;
+    // global.pause = !global.pause;
   }
 }
 
@@ -25,6 +25,7 @@ export function pointerDoubleTap() {
 
 let lastName = '';
 export function pointerMove() {
+  (document.getElementById('desc') as HTMLDivElement).style.display = global.tooltip ? 'block' : 'none';
   if (!global.scene) return;
   const pickInfo = global.scene.pick(global.scene.pointerX, global.scene.pointerY, undefined, false, global.scene.activeCamera);
   if (!pickInfo || !pickInfo.pickedMesh) return;
