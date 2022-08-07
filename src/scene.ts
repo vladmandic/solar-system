@@ -15,15 +15,20 @@ import { registerEvents } from './events';
 export function createScene() {
   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 
-  const options: EngineOptions = { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false, doNotHandleContextLost: true, audioEngine: false };
-  global.engine = new Engine(canvas, true, options);
-  global.engine.enableOfflineSupport = false;
-  log(`engine: babylonjs ${Engine.Version}`);
-
-  // @ts-ignore
-  // eslint-disable-next-line no-underscore-dangle
-  log(`renderer: ${global.engine._glRenderer.toLowerCase()}`);
-  log('gpu acceleration:', GPUParticleSystem.IsSupported);
+  if (!global.engine) {
+    const options: EngineOptions = { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false, doNotHandleContextLost: true, audioEngine: false };
+    global.engine = new Engine(canvas, true, options);
+    global.engine.enableOfflineSupport = false;
+    log(`engine: babylonjs ${Engine.Version}`);
+    // @ts-ignore
+    // eslint-disable-next-line no-underscore-dangle
+    log(`renderer: ${global.engine._glRenderer.toLowerCase()}`);
+    log('gpu acceleration:', GPUParticleSystem.IsSupported);
+  }
+  if (global.scene) {
+    for (const node of global.scene.getNodes()) node.dispose();
+    global.scene.dispose();
+  }
 
   global.scene = new Scene(global.engine);
   global.scene.clearCachedVertexData();
@@ -41,7 +46,7 @@ export function createScene() {
   glow.intensity = 2;
   glow.blurKernelSize = 64;
 
-  const camera = new ArcRotateCamera('Camera', Math.PI / 2, 3 * Math.PI / 4, 10, new Vector3(0, 0, 0), global.scene);
+  const camera = new ArcRotateCamera('Camera', Math.PI / 2, Math.PI / 2, 10, new Vector3(0, 0, 0), global.scene);
   camera.fov = 0.1;
   camera.attachControl(canvas);
   camera.upperRadiusLimit = 400;

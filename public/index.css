@@ -1,0 +1,782 @@
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/gui.css */
+.guify-container {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.guify-container > * {
+  z-index: 9999;
+}
+.guify-container,
+.guify-container * {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+}
+.guify-container-overlay {
+  height: 100%;
+}
+.guify-container-above {
+  height: calc(100% + var(--size-menu-bar-height));
+  bottom: 0;
+}
+.guify-fullscreen .guify-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/partials/container.css */
+.guify-component-container {
+  position: relative;
+  min-height: var(--size-component-height);
+  line-height: var(--size-component-height);
+  margin-bottom: var(--size-component-spacing);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/title.css */
+.guify-title {
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  height: var(--size-component-height);
+  vertical-align: top;
+}
+.guify-title-text {
+  display: inline-block;
+  height: var(--size-component-height);
+  line-height: var(--size-component-height);
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: var(--color-text-primary);
+  color: var(--color-panel-background);
+}
+.disabled .guify-title-text {
+  background-color: var(--color-text-disabled);
+}
+.guify-component-container > .guify-title {
+  margin-top: 0.5em;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/range.css */
+:root {
+  --range-track-color: var(--color-component-background);
+  --range-thumb-color: var(--color-component-foreground);
+  --range-thumb-highlight: var(--color-component-active);
+  --range-track-color-disabled: var(--color-component-background-disabled);
+  --range-thumb-color-disabled: var(--color-text-disabled);
+}
+input[type=range].guify-range {
+  position: absolute;
+  -webkit-appearance: none;
+  width: 100%;
+  height: var(--size-component-height);
+  margin: 0px 0;
+  padding: 0;
+  display: inline-block;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}
+.disabled input[type=range].guify-range {
+  pointer-events: none;
+}
+input[type=range].guify-range:focus {
+  outline: none;
+}
+input[type=range].guify-range::-moz-focus-outer {
+  border: 0;
+}
+input[type=range].guify-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: var(--size-component-height);
+  cursor: ew-resize;
+  background: var(--range-track-color);
+}
+input[type=range].guify-range::-webkit-slider-thumb {
+  height: var(--size-component-height);
+  width: 10px;
+  background: var(--range-thumb-color);
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  margin-top: 0px;
+  border: 0;
+}
+input[type=range].guify-range:focus::-webkit-slider-runnable-track {
+  background: var(--range-thumb-highlight);
+  outline: none;
+}
+.disabled input[type=range].guify-range::-webkit-slider-runnable-track {
+  pointer-events: none;
+  background: var(--range-track-color-disabled);
+}
+.disabled input[type=range].guify-range::-webkit-slider-thumb {
+  pointer-events: none;
+  background: var(--color-text-disabled);
+}
+input[type=range].guify-range::-moz-range-track {
+  width: 100%;
+  height: var(--size-component-height);
+  cursor: ew-resize;
+  background: var(--range-track-color);
+}
+input[type=range].guify-range:focus::-moz-range-track {
+  background: var(--range-thumb-highlight);
+}
+input[type=range].guify-range::-moz-range-thumb {
+  height: var(--size-component-height);
+  width: 10px;
+  background: var(--range-thumb-color);
+  cursor: ew-resize;
+  border: none;
+  border-radius: 0;
+}
+.disabled input[type=range].guify-range::-moz-range-track {
+  pointer-events: none;
+  background: var(--range-track-color-disabled);
+}
+.disabled input[type=range].guify-range::-moz-range-thumb {
+  pointer-events: none;
+  background: var(--range-thumb-color-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/partials/label.css */
+.guify-component-label {
+  left: 0;
+  width: calc(var(--size-label-width) - 2%);
+  display: inline-block;
+  margin-right: 2%;
+  vertical-align: top;
+  min-height: var(--size-component-height);
+  line-height: var(--size-component-height);
+  color: var(--color-text-primary);
+}
+.disabled .guify-component-label {
+  color: var(--color-text-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/partials/value.css */
+.guify-value-input {
+  position: absolute;
+  background-color: var(--color-component-background);
+  padding-left: 1%;
+  height: var(--size-component-height);
+  display: inline-block;
+  overflow: hidden;
+  border: none;
+  color: var(--color-text-secondary);
+  user-select: text;
+  cursor: text;
+  line-height: var(--size-component-height);
+  word-break: break-all;
+  box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  font-family: var(--font-family-for-input);
+  border-radius: 0;
+}
+.guify-value-input-right {
+  right: 0 !important;
+}
+.disabled .guify-value-input {
+  pointer-events: none;
+  background-color: var(--color-component-background-disabled);
+  color: var(--color-text-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/button.css */
+.guify-button {
+  box-sizing: border-box !important;
+  color: var(--color-text-secondary);
+  background-color: var(--color-component-background);
+  position: absolute;
+  text-align: center;
+  height: var(--size-component-height);
+  line-height: var(--size-component-height);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: calc(100% - var(--size-label-width));
+  border: none;
+  cursor: pointer;
+  right: 0;
+  font-family: inherit;
+}
+.guify-button:focus {
+  outline: none;
+}
+.guify-button::-moz-focus-inner {
+  border: 0;
+}
+.guify-button:hover,
+.guify-button:focus {
+  color: var(--color-text-hover);
+  background-color: var(--color-component-foreground);
+}
+.guify-button:active {
+  color: var(--color-text-active) !important;
+  background-color: var(--color-component-active) !important;
+}
+*.disabled > .guify-button {
+  pointer-events: none;
+  background-color: var(--color-component-background-disabled);
+  color: var(--color-text-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/checkbox.css */
+:root {
+  --checkbox-border-width: 4px;
+}
+input[type=checkbox].guify-checkbox {
+  opacity: 0;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+}
+input[type=checkbox].guify-checkbox + label {
+  margin: 0;
+}
+input[type=checkbox].guify-checkbox + label:before {
+  content: "";
+  display: inline-block;
+  width: var(--size-component-height);
+  height: var(--size-component-height);
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  background-color: var(--color-component-background);
+  border-radius: 0px;
+  cursor: pointer;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+input[type=checkbox].guify-checkbox:hover:not(:disabled) + label:before {
+  width: calc(var(--size-component-height) - (var(--checkbox-border-width) * 2));
+  height: calc(var(--size-component-height) - (var(--checkbox-border-width) * 2));
+  background-color: var(--color-component-background-hover);
+  border: solid 4px var(--color-component-background);
+}
+input[type=checkbox]:checked.guify-checkbox + label:before {
+  width: calc(var(--size-component-height) - (var(--checkbox-border-width) * 2));
+  height: calc(var(--size-component-height) - (var(--checkbox-border-width) * 2));
+  background-color: var(--color-component-foreground);
+  border: solid var(--checkbox-border-width) var(--color-component-background);
+}
+input[type=checkbox]:checked.guify-checkbox:focus + label:before {
+  width: calc(var(--size-component-height) - (var(--checkbox-border-width) * 2));
+  height: calc(var(--size-component-height) - (var(--checkbox-border-width) * 2));
+  background-color: var(--color-component-foreground);
+  border: solid var(--checkbox-border-width) var(--color-component-background-hover);
+}
+input[type=checkbox].guify-checkbox:focus + label:before {
+  background-color: var(--color-component-background-hover);
+}
+.disabled input[type=checkbox].guify-checkbox + label {
+  pointer-events: none;
+}
+.disabled input[type=checkbox].guify-checkbox + label::before {
+  pointer-events: none;
+  background-color: var(--color-component-background-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/select.css */
+.guify-select-dropdown {
+  display: inline-block;
+  position: absolute;
+  width: calc(100% - var(--size-label-width));
+  padding-left: 1.5%;
+  height: var(--size-component-height);
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  background-color: var(--color-component-background);
+  color: var(--color-text-secondary);
+  box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+}
+.guify-select-dropdown:focus {
+  outline: none;
+}
+.guify-select-dropdown::-moz-focus-inner {
+  border: 0;
+}
+.guify-select-dropdown:focus,
+.guify-select-dropdown:hover {
+  color: var(--color-text-hover);
+  background-color: var(--color-component-foreground);
+}
+.guify-select-dropdown::-ms-expand {
+  display: none;
+}
+.guify-select-triangle {
+  content: " ";
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  line-height: var(--size-component-height);
+  position: absolute;
+  right: 2.5%;
+  z-index: 1;
+  pointer-events: none;
+}
+.guify-select-triangle--up {
+  bottom: 55%;
+  border-bottom: 5px solid var(--color-text-secondary);
+  border-top: 0px transparent;
+}
+.guify-select-triangle--down {
+  top: 55%;
+  border-top: 5px solid var(--color-text-secondary);
+  border-bottom: 0px transparent;
+}
+.guify-select-triangle--up-highlight {
+  border-bottom-color: var(--color-text-hover);
+}
+.guify-select-triangle--down-highlight {
+  border-top-color: var(--color-text-hover);
+}
+.disabled .guify-select-dropdown {
+  pointer-events: none;
+  color: var(--color-text-disabled);
+  background-color: var(--color-component-background-disabled);
+}
+.disabled *[class^=guify-select-triangle] {
+  border-color: var(--color-text-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/text.css */
+.guify-text-input {
+  position: absolute;
+  padding-left: 6px;
+  height: var(--size-component-height);
+  width: calc(100% - var(--size-label-width));
+  border: none;
+  background: var(--color-component-background);
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  box-sizing: border-box !important;
+  resize: vertical;
+  border-radius: 0;
+}
+.guify-text-input:focus {
+  outline: none;
+}
+.disabled .guify-text-input {
+  pointer-events: none;
+  color: var(--color-text-disabled);
+  background-color: var(--color-component-background-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/color.css */
+.guify-color .Scp {
+  width: 125px;
+  height: 100px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
+}
+.guify-color .Scp-saturation {
+  position: relative;
+  width: calc(100% - 25px);
+  height: 100%;
+  background: linear-gradient(to right, #fff 0%, #f00 100%);
+  float: left;
+  margin-right: 5px;
+}
+.guify-color .Scp-brightness {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000 0%, rgba(255, 255, 255, 0) 100%);
+}
+.guify-color .Scp-sbSelector {
+  border: 1px solid;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 10px;
+  top: -7px;
+  left: -7px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.guify-color .Scp-hue {
+  width: 20px;
+  height: 100%;
+  position: relative;
+  float: left;
+  background: linear-gradient(to bottom, #f00 0%, #f0f 17%, #00f 34%, #0ff 50%, #0f0 67%, #ff0 84%, #f00 100%);
+}
+.guify-color .Scp-hSelector {
+  position: absolute;
+  background: #fff;
+  border-bottom: 1px solid #000;
+  right: -3px;
+  width: 10px;
+  height: 2px;
+}
+.disabled .guify-color {
+  pointer-events: none;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/folder.css */
+.guify-folder {
+  cursor: pointer;
+  padding-left: 0.5em;
+  color: var(--color-text-primary);
+}
+.guify-folder div {
+  display: inline-block;
+  vertical-align: sub;
+  line-height: var(--size-component-height);
+}
+.guify-folder:hover,
+.guify-folder:focus {
+  color: var(--color-text-hover);
+  background-color: var(--color-component-foreground);
+  outline: none;
+}
+.guify-folder-contents {
+  display: block;
+  box-sizing: border-box;
+  padding-left: 14px;
+  margin-bottom: 5px;
+  border-left: 2px solid var(--color-component-background);
+}
+.guify-folder-contents.guify-folder-closed {
+  height: 0;
+  display: none;
+}
+.guify-folder .guify-folder-arrow {
+  width: 1.5em;
+  vertical-align: middle;
+}
+.guify-folder.disabled {
+  pointer-events: none;
+  color: var(--color-text-disabled);
+}
+.guify-folder.disabled + .guify-folder-contents {
+  pointer-events: none;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/file.css */
+.guify-file-container {
+  display: inline-block;
+  outline: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: var(--color-text-primary);
+  background-color: var(--color-component-background);
+  cursor: pointer;
+}
+.guify-file-container:hover:not(:disabled),
+.guify-file-container:focus:not(:disabled) {
+  color: var(--color-text-hover);
+  background-color: var(--color-component-foreground);
+}
+.guify-file-container:active:not(:disabled) {
+  color: var(--color-text-active) !important;
+  background-color: var(--color-component-active) !important;
+}
+.guify-dragover:not(:disabled) {
+  background-color: var(--color-component-background);
+  box-shadow: inset 0 0 0 3px var(--color-component-foreground);
+}
+.disabled.guify-file-container {
+  pointer-events: none;
+  color: var(--color-text-disabled) !important;
+  background-color: var(--color-component-background-disabled) !important;
+  box-shadow: inset 0 0 0 3px var(--color-component-background-disabled) !important;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/display.css */
+.guify-display {
+  display: inline-block;
+  height: unset;
+  min-height: var(--size-component-height);
+  width: calc(100% - var(--size-label-width));
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  vertical-align: sub;
+  line-height: 1rem;
+  user-select: text;
+}
+.disabled .guify-display {
+  color: var(--color-text-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/public/interval.css */
+:root {
+  --interval-track-color: var(--color-component-background);
+  --interval-thumb-color: var(--color-component-foreground);
+  --interval-thumb-highlight: var(--color-component-active);
+  --interval-track-color-disabled: var(--color-component-background-disabled);
+  --interval-thumb-color-disabled: var(--color-text-disabled);
+}
+.guify-interval {
+  -webkit-appearance: none;
+  position: absolute;
+  height: var(--size-component-height);
+  margin: 0px 0;
+  width: 33%;
+  left: 54.5%;
+  background-color: var(--interval-track-color);
+  cursor: ew-resize;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.guify-interval-handle {
+  background-color: var(--interval-thumb-color);
+  position: absolute;
+  height: var(--size-component-height);
+  min-width: 1px;
+}
+.guify-interval-handle:focus {
+  background: var(--interval-thumb-highlight);
+}
+.disabled .guify-interval {
+  pointer-events: none;
+  background-color: var(--interval-track-color-disabled);
+}
+.disabled .guify-interval .guify-interval-handle {
+  background: var(--interval-thumb-color-disabled);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/internal/menu-bar.css */
+.guify-bar {
+  background-color: var(--color-menu-bar-background);
+  height: var(--size-menu-bar-height);
+  width: 100%;
+  opacity: 1.0;
+  position: relative;
+  top: 0;
+  cursor: default;
+}
+.guify-bar-title {
+  color: var(--color-menu-bar-text);
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  line-height: var(--size-menu-bar-height);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.guify-bar-button {
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  color: var(--color-text-primary);
+  background-color: var(--color-component-background);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 0;
+}
+.guify-bar-button:focus {
+  outline: none;
+}
+.guify-bar-button::-moz-focus-inner {
+  border: 0;
+}
+.guify-bar-button:hover,
+.guify-bar-button:focus {
+  color: var(--color-text-hover);
+  background-color: var(--color-component-foreground);
+}
+.guify-bar-button:active {
+  color: var(--color-text-active) !important;
+  background-color: var(--color-component-active) !important;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/internal/panel.css */
+.guify-panel-container {
+  position: absolute;
+  background: var(--color-panel-background);
+}
+.guify-panel-container-scrollable {
+  max-height: calc(100% - var(--size-menu-bar-height));
+  overflow: scroll;
+}
+.guify-panel-container-right-inner {
+  right: 0;
+  left: unset;
+}
+.guify-panel-container-left-inner {
+  right: unset;
+  left: 0;
+}
+.guify-panel-container-right-outer {
+  right: unset;
+  left: 100%;
+}
+.guify-panel-container-left-outer {
+  right: 100%;
+  left: unset;
+}
+.guify-fullscreen .guify-panel-container-right-inner,
+.guify-fullscreen .guify-panel-container-right-outer {
+  right: 0;
+  left: unset;
+}
+.guify-fullscreen .guify-panel-container-left-inner,
+.guify-fullscreen .guify-panel-container-left-outer {
+  right: unset;
+  left: 0;
+}
+.guify-panel {
+  padding: 14px;
+  padding-bottom: calc(14px - var(--size-component-spacing));
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+  text-align: left;
+  box-sizing: border-box;
+}
+.guify-panel.guify-panel-hidden {
+  height: 0px;
+  display: none;
+}
+.guify-panel * {
+  box-sizing: initial;
+  -webkit-box-sizing: initial;
+  -moz-box-sizing: initial;
+}
+.guify-panel input {
+  display: inline;
+}
+.guify-panel a {
+  color: inherit;
+  text-decoration: none;
+}
+.guify-panel-toggle-button {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--color-text-primary);
+  background-color: var(--color-component-background);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.guify-panel-toggle-button svg {
+  fill-opacity: 0;
+  stroke-width: 3;
+  stroke: var(--color-component-foreground);
+}
+.guify-panel-toggle-button:focus {
+  outline: none;
+}
+.guify-panel-toggle-button::-moz-focus-inner {
+  border: 0;
+}
+.guify-panel-toggle-button:hover,
+.guify-panel-toggle-button:focus {
+  color: var(--color-text-hover);
+  background-color: var(--color-component-foreground);
+}
+.guify-panel-toggle-button:active {
+  color: var(--color-text-active);
+  background-color: var(--color-component-active);
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/variables.css */
+:root {
+  --color-menu-bar-background: "black";
+  --color-menu-bar-text: "black";
+  --color-panel-background: "black";
+  --color-component-background: "black";
+  --color-component-background-hover: "black";
+  --color-component-background-disabled: "black";
+  --color-component-foreground: "black";
+  --color-component-active: "black";
+  --color-text-primary: "black";
+  --color-text-secondary: "black";
+  --color-text-hover: "black";
+  --color-text-active: "black";
+  --color-text-disabled: "black";
+  --size-menu-bar-height: 25px;
+  --size-component-height: 2rem;
+  --size-component-spacing: 5px;
+  --size-label-width: 42%;
+  --font-family: ui-monospace, monospace;
+  --font-height: 11px;
+  --font-weight: 400;
+}
+
+/* node_modules/.pnpm/github.com+colejd+guify@4cafddd568859fd7c33faaf9550c5e6ab3fe8e13/node_modules/guify/src/components/internal/toast-area.css */
+.guify-toast-notification {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+}
+.guify-toast-area .guify-toast-notification:nth-child(odd) {
+  color: var(--color-text-primary);
+  background-color: var(--color-panel-background);
+}
+.guify-toast-area .guify-toast-notification:nth-child(even) {
+  color: var(--color-text-primary);
+  background-color: var(--color-menu-bar-background);
+}
+.guify-toast-close-button {
+  color: var(--color-text-primary);
+  background: transparent;
+  position: absolute;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  right: 8px;
+}
+/*# sourceMappingURL=index.css.map */

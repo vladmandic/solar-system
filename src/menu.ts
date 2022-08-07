@@ -1,47 +1,29 @@
-import type { ArcRotateCamera } from '@babylonjs/core/Cameras';
-import { Vector3 } from '@babylonjs/core/Maths';
-import { Pane } from 'tweakpane/dist/tweakpane';
 import { log } from './log';
 import { global } from './globals';
+import { createScene } from './scene';
+import { Menu } from './Menu.js';
 
 export async function createMenu() {
   log('createMenu', global);
-  const pane = new Pane();
-  const div = document.querySelector('.tp-rotv') as HTMLDivElement;
-  div.style.fontSize = '1rem';
-  div.style.fontFamily = 'CenturyGothic';
-  div.style.borderRadius = '0';
 
-  pane.addMonitor(global, 'date');
-  pane.addInput(global, 'date');
-  pane.addInput(global, 'step', { min: 0, max: 24, step: 0.1 });
-  pane.addInput(global, 'pause');
-  pane.addInput(global, 'tooltip');
+  if (!global.menu) global.menu = new Menu(document.body, 'solar system simulation', { top: '20px', right: '20px' });
 
-  global.system = pane.addBlade({
-    view: 'list',
-    label: 'scene',
-    options: [{ text: 'solar system', value: 'solar' }, { text: 'earth centric', value: 'earth' }],
-    value: 'solar',
-  });
-
-  const btnInspector = pane.addButton({ title: '', label: 'inspector' });
-  btnInspector.on('click', () => {
+  global.menu.addBool('pause', global, 'pause');
+  global.menu.addBool('celestial body data', global, 'tooltip');
+  global.menu.addBool('sun & moon details', global, 'suncalc');
+  global.menu.addButton('show inspector', 'hide inspector', () => {
     if (!global.scene) return;
     const globalRoot = document.getElementById('inspector') as HTMLDivElement;
     if (global.scene.debugLayer.isVisible()) global.scene.debugLayer.hide();
     else global.scene.debugLayer.show({ embedMode: true, overlay: false, showExplorer: true, showInspector: true, globalRoot });
   });
-
-  const btnResetCamera = pane.addButton({ title: '', label: 'camera' });
-  btnResetCamera.on('click', async () => {
-    if (!global.scene) return;
-    const camera = (global.scene.activeCamera as ArcRotateCamera);
-    camera.setTarget(new Vector3(0, 0, 0));
-    camera.alpha = Math.PI / 2;
-    camera.beta = 3 * Math.PI / 4;
-    camera.radius = 30;
-    camera.parent = null;
-    camera.position = new Vector3(0, 0, 30);
-  });
+  global.menu.addButton('reset scene', 'reset scene', () => createScene());
+  global.menu.addList('simulation centric view', ['sun', 'earth'], 'sun', (item) => { global.system = item; });
+  global.menu.addRange('time step', global, 'step', 0, 24, 0.01);
+  global.menu.addRange('planet orbit expansion factor', global, 'planetOrbitExpand', 0.1, 10, 0.1);
+  global.menu.addRange('planet orbit expansion exponent', global, 'planetOrbitExponent', 0.1, 10, 0.1);
+  global.menu.addRange('moon orbit expansion factor', global, 'moonOrbitExpand', 1, 100, 1);
+  global.menu.addRange('body size exponent', global, 'sizeExponent', 0.05, 1, 0.01);
+  global.menu.addRange('body size factor', global, 'sizeFactor', 0.001, 1, 0.001);
+  global.menu.addInputDateTime('timestamp', global, 'date');
 }

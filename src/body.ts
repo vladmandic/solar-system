@@ -44,9 +44,9 @@ function createParticleSystem(name: string): ParticleSystem | GPUParticleSystem 
 export function createSolarBody(name: string, position: [number, number, number]): Mesh {
   const desc: Record<string, unknown> = bodies.find((b) => b.englishName === name) || {};
   log('create', { name, position, desc });
-  const diameterX = (desc.equaRadius as number ** 0.2) / 50;
-  const diameterY = desc.polarRadius !== 0 ? (desc.polarRadius as number ** 0.2) / 50 : diameterX;
-  const diameterZ = (desc.equaRadius as number ** 0.2) / 50;
+  const diameterX = (desc.equaRadius as number ** global.sizeExponent) * global.sizeFactor;
+  const diameterY = desc.polarRadius !== 0 ? (desc.polarRadius as number ** global.sizeExponent) * global.sizeFactor : diameterX;
+  const diameterZ = (desc.equaRadius as number ** global.sizeExponent) * global.sizeFactor;
   const sphere = MeshBuilder.CreateSphere(name, { diameterX, diameterY, diameterZ, segments: 20 }, global.scene);
   const material = new StandardMaterial(name, global.scene as Scene);
   material.diffuseColor = new Color3(1, 1, 1);
