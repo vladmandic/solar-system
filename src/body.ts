@@ -1,4 +1,9 @@
-import { Scene, MeshBuilder, GPUParticleSystem, Vector3, Color3, StandardMaterial, Texture, Mesh, PointParticleEmitter, ParticleSystem, Color4 } from '@babylonjs/core';
+import { Vector3, Color3, Color4 } from '@babylonjs/core/Maths';
+import { Mesh, MeshBuilder } from '@babylonjs/core/Meshes';
+import { StandardMaterial, Texture } from '@babylonjs/core/Materials';
+import { GPUParticleSystem, PointParticleEmitter, ParticleSystem } from '@babylonjs/core/Particles';
+import type { Scene } from '@babylonjs/core/scene';
+
 import { log } from './log';
 import { global } from './globals';
 import { bodies } from '../assets/solar-system.json';
@@ -36,9 +41,9 @@ function createParticleSystem(name: string): ParticleSystem | GPUParticleSystem 
   return trace;
 }
 
-export function createSolarBody(name: string, data): Mesh {
+export function createSolarBody(name: string, position: [number, number, number]): Mesh {
   const desc: Record<string, unknown> = bodies.find((b) => b.englishName === name) || {};
-  log('create', { name, data, desc });
+  log('create', { name, position, desc });
   const diameterX = (desc.equaRadius as number ** 0.2) / 50;
   const diameterY = desc.polarRadius !== 0 ? (desc.polarRadius as number ** 0.2) / 50 : diameterX;
   const diameterZ = (desc.equaRadius as number ** 0.2) / 50;
@@ -46,7 +51,7 @@ export function createSolarBody(name: string, data): Mesh {
   const material = new StandardMaterial(name, global.scene as Scene);
   material.diffuseColor = new Color3(1, 1, 1);
   material.specularColor = new Color3(0, 0, 0);
-  // material.emissiveColor = new Color3(0.05, 0.05, 0.05);
+  material.backFaceCulling = false;
   if (name === 'Sun') {
     material.emissiveColor = new Color3(1, 0.9, 0.5);
   } else {
@@ -56,7 +61,7 @@ export function createSolarBody(name: string, data): Mesh {
   if (material.diffuseTexture) material.diffuseTexture['uScale'] = -1;
   if (material.diffuseTexture) material.diffuseTexture['vScale'] = -1;
   sphere.material = material;
-  sphere.position = new Vector3(...data);
+  sphere.position = new Vector3(...position);
   sphere.rotation = new Vector3(Math.PI / 4, 0, -(desc.axialTilt as number || 0) * Math.PI / 360);
   createParticleSystem(name);
   global[name] = sphere;

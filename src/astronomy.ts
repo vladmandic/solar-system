@@ -1,5 +1,4 @@
 import * as SunCalc from 'suncalc';
-import { log } from './log';
 import { vsop } from '../assets/vsop';
 
 export function getAstronomyData(ts, lat, lon) {
@@ -18,7 +17,7 @@ export function getAstronomyData(ts, lat, lon) {
     if (moonIllumination.phase <= 0.08) img = '../assets/phases/moon-0.webp';
   */
   const astronomy = { sunTimes, moonTimes, moonIllumination, sunPos, moonPos };
-  log('getAstronomyData', { ts, lat, lon }, astronomy);
+  // log('getAstronomyData', { ts, lat, lon }, astronomy);
   return astronomy;
 }
 

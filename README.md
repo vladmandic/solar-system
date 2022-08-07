@@ -1,14 +1,10 @@
-# Earth
+# Solar System Model app
 
-Earth model app
+Solar System Model app
 
 ## Platforms
 
 Fully rendered in browser, no server-side components required
-
-## Todo
-
-- Earth rotation
 
 ## Investigate
 

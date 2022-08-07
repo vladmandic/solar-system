@@ -1,4 +1,7 @@
-import { ArcRotateCamera, PointerEventTypes, Vector3 } from '@babylonjs/core';
+import { PointerEventTypes } from '@babylonjs/core/Events';
+import { Vector3 } from '@babylonjs/core/Maths';
+import type { ArcRotateCamera } from '@babylonjs/core/Cameras';
+
 import { log } from './log';
 import { global } from './globals';
 import { bodies } from '../assets/solar-system.json';

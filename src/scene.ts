@@ -1,4 +1,12 @@
-import { Engine, EngineOptions, Scene, GlowLayer, MeshBuilder, GPUParticleSystem, ArcRotateCamera, PointLight, Vector3, Color3, StandardMaterial, HemisphericLight } from '@babylonjs/core';
+import { Scene } from '@babylonjs/core/scene';
+import { Engine, EngineOptions } from '@babylonjs/core/Engines';
+import { Vector3, Color3 } from '@babylonjs/core/Maths';
+import { ArcRotateCamera } from '@babylonjs/core/Cameras';
+import { PointLight, HemisphericLight } from '@babylonjs/core/Lights';
+import { GlowLayer } from '@babylonjs/core/Layers';
+import { MeshBuilder } from '@babylonjs/core/Meshes';
+import { GPUParticleSystem } from '@babylonjs/core/Particles';
+import { StandardMaterial } from '@babylonjs/core/Materials';
 import '@babylonjs/inspector';
 import { log } from './log';
 import { global } from './globals';
@@ -33,14 +41,14 @@ export function createScene() {
   glow.intensity = 2;
   glow.blurKernelSize = 64;
 
-  // const camera = new ArcRotateCamera('camera', Math.PI, 90 / 180 * Math.PI, 20, new Vector3(0, 0, 0), scene);
-  const camera = new ArcRotateCamera('Camera', Math.PI / 2, Math.PI / 2, 20, new Vector3(0, 0, 0), global.scene);
-  // camera.parent = space;
+  const camera = new ArcRotateCamera('Camera', Math.PI / 2, 3 * Math.PI / 4, 10, new Vector3(0, 0, 0), global.scene);
   camera.fov = 0.1;
   camera.attachControl(canvas);
   camera.upperRadiusLimit = 400;
   camera.lowerRadiusLimit = 0.001;
+  camera.wheelDeltaPercentage = 0.01;
   camera.useBouncingBehavior = true;
+  camera.radius = 30;
 
   const sunlight = new PointLight('Sunlight', new Vector3(0, 0, 0), global.scene);
   sunlight.intensity = 1.15;
