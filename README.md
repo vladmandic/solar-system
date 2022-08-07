@@ -6,6 +6,13 @@ Solar System Model app
 
 Fully rendered in browser, no server-side components required
 
+## Todo
+
+- Add date/time selector
+- Add Milky way background
+- Add Data printouts
+- Correct starting Earth rotation
+
 ## Investigate
 
 - Asterank  
