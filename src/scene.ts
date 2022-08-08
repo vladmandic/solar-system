@@ -46,7 +46,7 @@ export function createScene() {
   glow.intensity = 2;
   glow.blurKernelSize = 64;
 
-  const camera = new ArcRotateCamera('Camera', Math.PI / 2, Math.PI / 2, 10, new Vector3(0, 0, 0), global.scene);
+  const camera = new ArcRotateCamera('Camera', Math.PI / 2, 3 * Math.PI / 4, 10, new Vector3(0, 0, 0), global.scene);
   camera.fov = 0.1;
   camera.attachControl(canvas);
   camera.upperRadiusLimit = 400;
@@ -56,9 +56,9 @@ export function createScene() {
   camera.radius = 30;
 
   const sunlight = new PointLight('Sunlight', new Vector3(0, 0, 0), global.scene);
-  sunlight.intensity = 1.15;
+  sunlight.intensity = 1.2;
   const light = new HemisphericLight('Global Light', new Vector3(0, 0, 0), global.scene);
-  light.intensity = 0.2;
+  light.intensity = 0.3;
 
   // Create SkyBox
   const skybox = MeshBuilder.CreateBox('SkyBox', { size: 1000.0 }, global.scene);

@@ -17,19 +17,16 @@ const hsv2rgba = (h, s, v) => {
 function createParticleSystem(name: string): ParticleSystem | GPUParticleSystem {
   const capacity = 10000;
   let trace;
-  if (GPUParticleSystem.IsSupported) {
-    trace = new GPUParticleSystem(name, { capacity }, global.scene as Scene);
-  } else {
-    trace = new ParticleSystem(name, capacity, global.scene as Scene);
-  }
+  if (GPUParticleSystem.IsSupported) trace = new GPUParticleSystem(name, { capacity }, global.scene as Scene);
+  else trace = new ParticleSystem(name, capacity, global.scene as Scene);
   trace.particleTexture = new Texture('./assets/flare.png');
-  trace.emitRate = 300;
+  trace.emitRate = 1000;
   trace.minEmitBox = new Vector3(-0.02, -0.02, -0.02);
   trace.maxEmitBox = new Vector3(+0.02, +0.02, +0.02);
-  trace.minSize = 0.01;
-  trace.maxSize = 0.02;
-  trace.minLifeTime = 1;
-  trace.maxLifeTime = 5;
+  trace.minSize = 0.005;
+  trace.maxSize = 0.015;
+  trace.minLifeTime = 2;
+  trace.maxLifeTime = 6;
   trace.minEmitPower = 0;
   trace.maxEmitPower = 0;
   trace.color1 = new Color4(...hsv2rgba(Math.round(360 * Math.random()), 1, 0.5));
@@ -62,7 +59,7 @@ export function createSolarBody(name: string, position: [number, number, number]
   if (material.diffuseTexture) material.diffuseTexture['vScale'] = -1;
   sphere.material = material;
   sphere.position = new Vector3(...position);
-  sphere.rotation = new Vector3(Math.PI / 4, 0, -(desc.axialTilt as number || 0) * Math.PI / 360);
+  sphere.rotation = new Vector3(0, Math.PI / 2, Math.PI / 2 - ((desc.axialTilt as number || 0) * Math.PI / 360));
   createParticleSystem(name);
   global[name] = sphere;
   return sphere;
