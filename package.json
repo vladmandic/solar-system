@@ -40,7 +40,7 @@
     "@vladmandic/build": "^0.7.14",
     "babylonjs-gltf2interface": "^5.38.0",
     "esbuild": "^0.16.10",
-    "eslint": "8.30.0",
+    "eslint": "8.31.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.26.0",
